@@ -1,0 +1,21 @@
+p{
+    margin: 10px 0 !important;
+}
+
+.login-container{
+    width: 500px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.fa-book{
+    color: #E53935;
+}
+nav .nav-wrapper{
+    padding-left:  15px;
+    padding-right:  15px;
+}
+
+nav .brand-logo.right{
+    padding-right: 15px;
+}

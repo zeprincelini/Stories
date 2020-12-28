@@ -1,0 +1,28 @@
+<h6>Dashboard</h6>
+<h4>welcome {{name}}</h4>
+{{!-- <h5>stories</h5> --}}
+{{#if stories}}
+    <table class="striped responsive-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stories}}
+            <tr>
+                <td><a href="/stories/{{_id}}">{{title}}</a></td>
+                <td>{{category}}</td>
+                <td><span class="dash-status">{{status}}</span></td>
+                <td>{{stories.date}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>no story added yet</p>
+{{/if}}

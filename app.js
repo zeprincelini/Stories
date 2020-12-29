@@ -45,9 +45,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//bodyparser middleware
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
 //routes
 app.use("/", require('./routes/index'));
 app.use("/auth", require('./routes/auth'));
+app.use("/stories", require('./routes/stories'));
 
 //port
 const port = process.env.PORT || 3000;

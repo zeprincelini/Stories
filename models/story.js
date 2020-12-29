@@ -12,12 +12,13 @@ const StorySchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        default: 'public',
-        enum: ['public', 'private']
+        default: 'Public',
+        enum: ['Public', 'Private']
     },
     category: {
         type: String,
-        required: true
+        default: 'Action',
+        enum: ['Action', 'Thriller', 'Romance', 'Horror']
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

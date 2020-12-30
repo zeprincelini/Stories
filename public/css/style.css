@@ -19,3 +19,7 @@ nav .nav-wrapper{
 nav .brand-logo.right{
     padding-right: 15px;
 }
+
+.fa-small{
+    font-size: 14px !important;
+}

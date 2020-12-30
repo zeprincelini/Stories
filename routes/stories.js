@@ -37,4 +37,19 @@ router.get("/", ensureAuth, async (req, res) => {
         res.render('error/500')
    }
 });
+
+//edit stories
+router.get("/edit/:id", async (req, res) => {
+    let story = await Story.findOne({_id : req.params.id}).lean();
+    if(!story){
+        res.render("error/404")
+    }
+    if(story.user != req.user.id){
+        res.redirect("/stories")
+    }else{
+        res.render("story/edit", {
+            story
+        })
+    }
+})
 module.exports = router;

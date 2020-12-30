@@ -17,4 +17,16 @@ module.exports = {
     stripTags: (input) => {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
+    editIcon: (storyUser, loggedInUser, storyId, floating = true) => {
+        if(storyUser._id.toString() == loggedInUser._id.toString()){
+            if(floating){
+                return `<a href = "/stories/edit/${storyId}" class = "btn-floating halfway-fab">
+                <i class="fas fa-edit fa-small"></i></a>`
+            }else{
+                return `<a href = "/stories/edit/${storyId}"><i class="fas fa-edit"></i></a>`
+            }
+        }else{
+            return ''
+        }
+    },
 }

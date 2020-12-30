@@ -13,5 +13,8 @@ module.exports = {
             return new_str +'...';
         }
         return str;
-    }
+    },
+    stripTags: (input) => {
+        return input.replace(/<(?:.|\n)*?>/gm, '')
+    },
 }

@@ -5,11 +5,12 @@
         <div class="card center-align">
             <div class="card-image">
                 {{!-- todo --}}
-                <span class="card-title">{{title}}</span>
+                {{!-- <span class="card-title">{{title}}</span> --}}
             </div>
             <div class="card-content">
-                <p>{{body}}</p>
-                <p>{{category}}</p>
+                <p>{{title}}</p>
+                 <p class="left-align green-text">{{category}}</p>
+                <p>{{stripTags (truncate body 150)}}</p>
                 <br>
                 <div class="chip">
                     <img src='{{user.image}}' alt="">

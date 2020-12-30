@@ -26,8 +26,11 @@ if(process.env.NODE_ENV === "development"){
     app.use(morgan('dev'));
 }
 
+//hbs helpers
+const {formatDate} = require('./helpers/helper');
+
 //handlebars
-app.engine('.hbs', hbs({defaultLayout: 'main', extname: '.hbs'}));
+app.engine('.hbs', hbs({helpers: {formatDate}, defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 //static folder

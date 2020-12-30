@@ -27,10 +27,10 @@ if(process.env.NODE_ENV === "development"){
 }
 
 //hbs helpers
-const {formatDate, truncate, stripTags, editIcon} = require('./helpers/helper');
+const {formatDate, truncate, stripTags, editIcon, select} = require('./helpers/helper');
 
 //handlebars
-app.engine('.hbs', hbs({helpers: {formatDate, truncate, stripTags, editIcon}, defaultLayout: 'main', extname: '.hbs'}));
+app.engine('.hbs', hbs({helpers: {formatDate, truncate, stripTags, editIcon, select}, defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 //static folder

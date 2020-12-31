@@ -39,7 +39,7 @@ router.get("/", ensureAuth, async (req, res) => {
 });
 
 //edit stories
-router.get("/edit/:id", async (req, res) => {
+router.get("/edit/:id", ensureAuth, async (req, res) => {
     try{
         let story = await Story.findOne({_id : req.params.id}).lean();
     if(!story){
@@ -59,7 +59,7 @@ router.get("/edit/:id", async (req, res) => {
 });
 
 //update stories
-router.put('/:id', async (req, res) => {
+router.put('/:id', ensureAuth, async (req, res) => {
     try{
         let story = await Story.findById(req.params.id).lean();
     if(!story){
@@ -81,7 +81,7 @@ router.put('/:id', async (req, res) => {
 });
 
 //delete stories
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', ensureAuth, async (req, res) => {
     try{
         await Story.remove({_id : req.params.id});
         res.redirect('/dashboard');
@@ -92,13 +92,29 @@ router.delete('/:id', async (req, res) => {
 });
 
 //get single story
-router.get('/:id', async (req, res) => {
+router.get('/:id', ensureAuth, async (req, res) => {
     try{
         let story = await Story.findById(req.params.id).populate('user').lean();
         res.render('story/single_story', {story});
     }catch(err){
         console.error(err);
         res.render('error/404');
+    }
+});
+
+//user stories
+router.get('/user/:userId', ensureAuth, async (req, res) => {
+    try{
+        let story = await Story.find({
+            user: req.params.userId,
+            status: 'Public'
+        }).populate('user')
+        .lean();
+        res.render('story/index', {story})
+    
+    }catch(err){
+        console.error(err);
+        res.render('error/404')
     }
 });
 

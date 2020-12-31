@@ -105,12 +105,12 @@ router.get('/:id', ensureAuth, async (req, res) => {
 //user stories
 router.get('/user/:userId', ensureAuth, async (req, res) => {
     try{
-        let story = await Story.find({
+        let stories = await Story.find({
             user: req.params.userId,
             status: 'Public'
         }).populate('user')
         .lean();
-        res.render('story/index', {story})
+        res.render('story/index', {stories})
     
     }catch(err){
         console.error(err);

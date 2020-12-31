@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const hbs = require('express-handlebars');
+const methodOverride = require('method-override');
 const mongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const connectDB = require("./config/db");
@@ -51,6 +52,16 @@ app.use(passport.session());
 //bodyparser middleware
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+
+//method-override middleware
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    let method = req.body._method
+    delete req.body._method
+    return method
+  }
+}));
 
 //express set global variable
 app.use((req, res, next) => {

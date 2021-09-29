@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col s12">
+        <h4>Edit Story</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6 offset-s3">
+        <form action="/stories/{{story._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="title" class="validate" value = "{{story.title}}" name="title">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <select id="category" name="category">
+                        {{#select story.category}}
+                        <option value="Action" selected>Action</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horror">Horror</option>
+                        {{/select}}
+                    </select>
+                        <label>Choose a category</label>
+                </div>
+            </div>
+             <div class="row">
+                <div class="input-field">
+                    <select id="status" name="status">
+                        {{#select story.status}}
+                        <option value="Public" selected>Public</option>
+                        <option value="Private">Private</option>
+                        {{/select}}
+                    </select>
+                        <label>Status Select</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <textarea id="story" class="materialize-textarea" name = "body">{{story.body}}</textarea>
+                    <label for="story">Story</label>
+                </div>
+            </div>
+            <div class="row">
+               <button class="btn waves-effect waves-light red" type="submit" name="action">Save
+                    <i class="material-icons right"></i>
+                </button>
+               <a href="/dashboard" class="btn right">cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
